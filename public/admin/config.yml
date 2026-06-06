@@ -1,7 +1,8 @@
 backend:
   name: github
-  repo: shalusharma/rk5-shopping-bar
+  repo: shalu103/RK5-Shopping-Bar
   branch: main
+  site_domain: moj-clothing.vercel.app
 
 local_backend: true
 
