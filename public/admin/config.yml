@@ -3,6 +3,8 @@ backend:
   repo: shalusharma/rk5-shopping-bar
   branch: main
 
+local_backend: true
+
 media_folder: "public/images"
 public_folder: "/images"
 
@@ -32,7 +34,7 @@ collections:
 
   - name: "collections_list"
     label: "Fashion Collections"
-    folder: "src/content/collections"
+    folder: "src/content/collections_list"
     create: true
     slug: "{{title}}"
     fields:

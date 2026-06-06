@@ -27,7 +27,7 @@ const collections = await getCollection('collections_list');
     <main>
         <section id="home" class="hero">
             <div class="hero-bg-container">
-                <img src={heroData.image} alt="Family Shopping" class="hero-image">
+                <img src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${heroData.image}`} alt="Family Shopping" class="hero-image">
             </div>
             <div class="hero-overlay">
                 <div class="container">
