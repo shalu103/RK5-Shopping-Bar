@@ -1,0 +1,201 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import heroData from '../content/sections/hero.json';
+import contactData from '../content/sections/contact.json';
+
+const collections = await getCollection('collections_list');
+---
+
+<Layout title="RK5 Shopping Bazar | We Tailor Fashion for Your Family">
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">RK5 Shopping Bazar</div>
+            <nav class="nav">
+                <a href="#home">Home</a>
+                <a href="#collections">Collections</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a href={`https://wa.me/${contactData.whatsapp}`} class="btn primary-btn header-cta">WhatsApp Us</a>
+            <button class="mobile-nav-toggle" aria-label="Toggle Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-bg-container">
+                <img src={heroData.image} alt="Family Shopping" class="hero-image">
+            </div>
+            <div class="hero-overlay">
+                <div class="container">
+                    <div class="hero-card reveal">
+                        <span class="badge">{heroData.badge}</span>
+                        <h1>{heroData.headline}</h1>
+                        <p>{heroData.subtext}</p>
+                        <div class="hero-btns">
+                            <a href={`tel:${contactData.phone}`} class="btn primary-btn">Call Now</a>
+                            <a href={`https://wa.me/${contactData.whatsapp}`} class="btn secondary-btn">WhatsApp Us</a>
+                            <a href="https://www.google.com/maps/search/?api=1&query=RK5+Shopping+Bazar+Jaipur" target="_blank" class="btn outline-btn">Visit Store</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="marquee">
+            <div class="marquee-content">
+                <span>Men’s Wear • Women’s Wear • Kids Collection • Party Wear • Casual Wear • Formal Wear • Summer Collection • Winter Collection • Best Rates • Quality Clothing • </span>
+                <span>Men’s Wear • Women’s Wear • Kids Collection • Party Wear • Casual Wear • Formal Wear • Summer Collection • Winter Collection • Best Rates • Quality Clothing • </span>
+            </div>
+        </div>
+
+        <section id="collections" class="collections">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Fashion for Every Family Member</h2>
+                    <p>From top to bottom, we’ve got your family covered for every season and occasion.</p>
+                </div>
+                <div class="collections-grid">
+                    {collections.map(item => (
+                        <div class="collection-card reveal">
+                            <div class="card-icon"><i data-lucide={item.data.icon}></i></div>
+                            <h3>{item.data.title}</h3>
+                            <p>{item.data.description}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        <section class="rotating-section">
+            <div class="container">
+                <div class="rotating-container">
+                    <div class="rotating-center">
+                        <h3>From Top to Bottom,<br>We’ve Got You Covered</h3>
+                    </div>
+                    <div class="orbit">
+                        <div class="orbit-item" style="--i:1;">Men</div>
+                        <div class="orbit-item" style="--i:2;">Women</div>
+                        <div class="orbit-item" style="--i:3;">Kids</div>
+                        <div class="orbit-item" style="--i:4;">Party</div>
+                        <div class="orbit-item" style="--i:5;">Casual</div>
+                        <div class="orbit-item" style="--i:6;">Formal</div>
+                        <div class="orbit-item" style="--i:7;">Summer</div>
+                        <div class="orbit-item" style="--i:8;">Winter</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="why-us" class="why-us">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Why Families Choose Us</h2>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-block reveal">
+                        <div class="feature-icon"><i data-lucide="check-circle"></i></div>
+                        <h3>Quality fabrics and trusted styles</h3>
+                        <p>We source only the best materials to ensure durability and comfort for your family.</p>
+                    </div>
+                    <div class="feature-block reveal">
+                        <div class="feature-icon"><i data-lucide="trending-up"></i></div>
+                        <h3>Latest seasonal collections</h3>
+                        <p>Stay ahead of trends with our constantly updated inventory for every season.</p>
+                    </div>
+                    <div class="feature-block reveal">
+                        <div class="feature-icon"><i data-lucide="tag"></i></div>
+                        <h3>Worthy rates for every family</h3>
+                        <p>Premium fashion doesn't have to be expensive. We offer competitive pricing.</p>
+                    </div>
+                    <div class="feature-block reveal">
+                        <div class="feature-icon"><i data-lucide="home"></i></div>
+                        <h3>Complete family fashion destination</h3>
+                        <p>One-stop shop for everyone, saving you time and effort on shopping days.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-cta">
+            <div class="container">
+                <div class="contact-card reveal">
+                    <h2>Visit RK5 Shopping Bazar Today</h2>
+                    <p>Planning your next family shopping? Come visit us or connect with us directly.</p>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <i data-lucide="map-pin"></i>
+                            <a href="https://www.google.com/maps/search/?api=1&query=RK5+Shopping+Bazar+Jaipur" target="_blank">{contactData.address}</a>
+                        </div>
+                        <div class="contact-item">
+                            <i data-lucide="phone"></i>
+                            <a href={`tel:${contactData.phone}`}>{contactData.phone}</a>
+                        </div>
+                    </div>
+                    <div class="contact-btns">
+                        <a href={`tel:${contactData.phone}`} class="btn primary-btn"><i data-lucide="phone"></i> Call Now</a>
+                        <a href={`https://wa.me/${contactData.whatsapp}`} class="btn secondary-btn"><i data-lucide="message-circle"></i> WhatsApp Us</a>
+                        <a href={contactData.instagram} class="btn social-btn ig"><i data-lucide="instagram"></i> Instagram</a>
+                        <a href={contactData.facebook} class="btn social-btn fb"><i data-lucide="facebook"></i> Facebook</a>
+                        <a href={contactData.whatsapp_channel} class="btn social-btn wa-channel"><i data-lucide="rss"></i> WhatsApp Channel</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>RK5 Shopping Bazar</h3>
+                    <p>We Tailor Fashion for Your Family</p>
+                </div>
+                <div class="footer-links">
+                    <a href={contactData.instagram}>Instagram</a>
+                    <a href={contactData.facebook}>Facebook</a>
+                    <a href={contactData.whatsapp_channel}>WhatsApp Channel</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 RK5 Shopping Bazar. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="fab-container">
+        <div class="fab-menu" id="fabMenu">
+            <a href={`tel:${contactData.phone}`} class="fab-item call" title="Call Now">
+                <i data-lucide="phone"></i>
+                <span>Call Now</span>
+            </a>
+            <a href={`https://wa.me/${contactData.whatsapp}`} class="fab-item whatsapp" title="WhatsApp Us">
+                <i data-lucide="message-circle"></i>
+                <span>WhatsApp Us</span>
+            </a>
+        </div>
+        <button class="fab-main" id="fabMain" aria-label="Contact Options">
+            <i data-lucide="message-circle" class="icon-open"></i>
+            <i data-lucide="x" class="icon-close"></i>
+        </button>
+    </div>
+
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <div class="mobile-nav-content">
+            <button class="mobile-nav-close" id="mobileClose"><i data-lucide="x"></i></button>
+            <div class="mobile-logo">RK5 Shopping Bazar</div>
+            <nav class="mobile-links">
+                <a href="#home">Home</a>
+                <a href="#collections">Collections</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <div class="mobile-cta">
+                <a href={`https://wa.me/${contactData.whatsapp}`} class="btn primary-btn">WhatsApp Us</a>
+            </div>
+        </div>
+    </div>
+</Layout>
